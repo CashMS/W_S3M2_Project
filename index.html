@@ -27,8 +27,13 @@
     // 🧠 Examples of usage:
     // processSingleLearner({ name: "Elisabeth", lovesJS: 1 }) // should return { name: "Elisabeth", lovesJS: true }
     // processSingleLearner({ name: "Pete", age: 23, lovesJS: 0 }) // should return { name: "Pete", age: 23, lovesJS: false }
-    const processSingleLearner = () => {
-
+    const processSingleLearner = (learner) => {
+        if (learner.lovesJS === 1) {
+          learner.lovesJS = true;
+        } else if (learner.lovesJS === 0) {
+          learner.lovesJS = false;
+        }
+      return learner;
     }
 
     // 👉 CHALLENGE 2
@@ -41,8 +46,15 @@
     // ❗ Notes:
     // 🧠 There are many approaches to this problem: using a loop, using forEach, using map...
     // 🧠 Solve this challenge using a for/in loop or a for loop.
-    const processLearnersLoop = () => {
-
+    const processLearnersLoop = (learner) => {
+      for (let idx = 0; idx < learner.length; idx++) {
+        if (learner[idx].lovesJS === 0) {
+          learner[idx].lovesJS = false;
+        } else {
+          learner[idx].lovesJS = true;
+        }
+      }
+      return learner;
     }
 
     // 👉 CHALLENGE 3
@@ -51,8 +63,15 @@
     // ❗ Notes:
     // 🧠 Solve this challenge using the forEach method of the learners array.
     // 🧠 Use arrow functions whenever possible.
-    const processLearnerForEach = () => {
-
+    const processLearnerForEach = (learner) => {
+      learner.forEach((psl) => {
+        if (psl.lovesJS === 1) {
+          psl.lovesJS = true;
+        } else {
+          psl.lovesJS = false;
+        }
+      });
+      return learner;
     }
 
     // 👉 CHALLENGE 4
@@ -61,8 +80,15 @@
     // ❗ Notes:
     // 🧠 Solve this challenge using the map method of the learners array.
     // 🧠 Use arrow functions.
-    const processLearnerMap = () => {
-
+    const processLearnerMap = (learner) => {
+      const poop = learner.map(psl => {
+        if (psl.lovesJS === 1) {
+          psl.lovesJS = true;
+        } else {
+          psl.lovesJS = false;
+        }
+      });
+      return learner;
     }
 
     // 👉 CHALLENGE 5
@@ -73,8 +99,19 @@
     // ❗ Notes:
     // 🧠 Solve this challenge using the forEach method of the learners array.
     // 🧠 You will need to declare a result array into which you push learners from inside your forEach loop.
-    const getJavaScriptLoversForEach = () => {
-
+    const getJavaScriptLoversForEach = (learner) => {
+      let result = [];
+      learner.forEach((psl) => {
+        if (psl.lovesJS === 1 || psl.lovesJS === true) {
+          result.push(psl);
+        } 
+      });
+      if (result.length === 0) {
+        return "no JS lovers here!"
+      } else {
+        return result;
+      }
+      
     }
 
     // 👉 CHALLENGE 6
@@ -82,8 +119,18 @@
     // 🧠 It should work exactly the same as the getJavaScriptLoversForEach function above.
     // ❗ Notes:
     // 🧠 Solve this challenge using the filter method of the learners array.
-    const getJavaScriptLoversFilter = () => {
-
+    const getJavaScriptLoversFilter = (learner) => {
+      let result = [];
+      const woop = learner.filter((psl) => {
+        if (psl.lovesJS === 1 || psl.lovesJS === true) {
+          result.push(psl);
+        }
+      })
+      if (result.length === 0) {
+        return "no JS lovers here!";
+      } else {
+        return result;
+      }
     }
 
     // 👉 CHALLENGE 7
@@ -98,8 +145,24 @@
     // ❗ Notes:
     // 🧠 This could be solved by using filter to make an array of odd integers, and then using forEach to add them up.
     // 🧠 Or you could opt for solving everything with a single forEach which is the recommended approach (saves a loop).
-    const sumOddInts = () => {
-
+    const sumOddInts = (integers) => {
+      let result = [];
+      let sum = 0;
+      let odd = [];
+      integers.forEach((int) => {
+        if (int % 2 === 1) {
+          sum += int;
+          odd = int;
+          result = [sum];
+          result.push(odd);
+        }
+      });
+      // if (sum === 0) {
+      //   result = [0,[]];
+      // } else {
+      //   result = [sum];
+      // }
+      return result;
     }
 
     // 👉 CHALLENGE 8
